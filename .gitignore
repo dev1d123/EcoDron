@@ -1,0 +1,19 @@
+# Root-level ignore for temporary folders
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+/Packages/
+/ProjectSettings/
+/.vscode/
+*.slnx
+*.csproj
+*.unityproj
+*.sln
+*.user
+*.userprefs
