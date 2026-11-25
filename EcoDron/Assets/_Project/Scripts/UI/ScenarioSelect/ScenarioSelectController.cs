@@ -28,7 +28,7 @@ namespace EcoDron.UI.ScenarioSelect
 
         [Header("Reference Preview Mode")]
         [Tooltip("Si está activo, muestra el Escenario 1 completado, el 2 activo y el 3 bloqueado como en la referencia visual hasta conectar los niveles jugables.")]
-        [SerializeField] private bool previewReferenceStates = true;
+        [SerializeField] private bool previewReferenceStates = false;
 
         [Header("Pending Route Popup")]
         [SerializeField] private UIPopupWindow routePendingPopup;
@@ -108,12 +108,14 @@ namespace EcoDron.UI.ScenarioSelect
                     completedLevels = CampaignProgress.GetScenarioCompletedCount(scenario);
                 }
 
+                Debug.Log($"[ScenarioSelect] Tarjeta '{scenario.scenarioId}' ({scenario.headerTitle}) -> Estado: {state}, Progreso: {completedLevels}/{totalLevels}, Preview: {previewReferenceStates}");
                 card.Bind(scenario, state, completedLevels, totalLevels, OnScenarioSelected);
             }
         }
 
         public void OnBackClicked()
         {
+            Debug.Log($"[ScenarioSelect] Volviendo al Menú Principal ('{mainMenuSceneName}').");
             if (!string.IsNullOrEmpty(mainMenuSceneName) && Application.CanStreamedLevelBeLoaded(mainMenuSceneName))
             {
                 SceneManager.LoadScene(mainMenuSceneName);
@@ -131,7 +133,7 @@ namespace EcoDron.UI.ScenarioSelect
         private void OnScenarioSelected(ScenarioDataSO scenario)
         {
             CampaignProgress.SelectedScenarioId = scenario.scenarioId;
-            PlayerPrefs.Save();
+            Debug.Log($"<b><color=#00E5FF>[ScenarioSelect]</color></b> Escenario seleccionado: '{scenario.scenarioId}' ({scenario.headerTitle}). Cargando '{levelRouteSceneName}'...");
 
             if (!string.IsNullOrEmpty(levelRouteSceneName) && Application.CanStreamedLevelBeLoaded(levelRouteSceneName))
             {

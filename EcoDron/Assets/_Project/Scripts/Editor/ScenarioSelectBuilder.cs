@@ -194,7 +194,7 @@ namespace EcoDron.EditorTools
             ctrlSo.FindProperty("mainMenuSceneName").stringValue = "01_MainMenu";
             ctrlSo.FindProperty("levelRouteSceneName").stringValue = "03_LevelRoute";
             ctrlSo.FindProperty("backButton").objectReferenceValue = backBtn;
-            ctrlSo.FindProperty("previewReferenceStates").boolValue = true;
+            ctrlSo.FindProperty("previewReferenceStates").boolValue = false;
             ctrlSo.FindProperty("routePendingPopup").objectReferenceValue = pendingPopup;
             ctrlSo.FindProperty("routePendingMessageText").objectReferenceValue = pendingMsg;
 

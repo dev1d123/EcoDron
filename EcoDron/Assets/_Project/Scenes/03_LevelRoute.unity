@@ -2022,7 +2022,7 @@ MonoBehaviour:
   - {fileID: 690136228}
   - {fileID: 1475143185}
   levelPopover: {fileID: 1622774164}
-  previewReferenceStates: 1
+  previewReferenceStates: 0
   defaultPreviewScenarioId: scenario_02
   levelPendingPopup: {fileID: 119945654}
   levelPendingMessageText: {fileID: 196750455}

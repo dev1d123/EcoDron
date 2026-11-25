@@ -34,7 +34,7 @@ namespace EcoDron.UI.LevelRoute
 
         [Header("Reference Preview Mode")]
         [Tooltip("Muestra estados de ejemplo coherentes con la referencia visual mientras se crean las escenas jugables.")]
-        [SerializeField] private bool previewReferenceStates = true;
+        [SerializeField] private bool previewReferenceStates = false;
         [SerializeField] private string defaultPreviewScenarioId = "scenario_02";
 
         [Header("Pending Level Popup")]
@@ -159,7 +159,10 @@ namespace EcoDron.UI.LevelRoute
                 }
 
                 totalEarnedStars += stars[i];
+                Debug.Log($"[LevelRoute] Nodo '{(lvl != null ? lvl.levelId : "null")}' -> Estado: {states[i]}, Estrellas: {stars[i]}/3, Preview: {previewReferenceStates}");
             }
+
+            Debug.Log($"<b><color=#00E5FF>[LevelRoute]</color></b> Escenario activo: '{_activeScenario.scenarioId}' ({_activeScenario.headerTitle}) | Estrellas totales: {totalEarnedStars}/{maxPossibleStars}");
 
             if (starsTotalText != null)
             {
@@ -233,7 +236,7 @@ namespace EcoDron.UI.LevelRoute
             if (level == null) return;
 
             CampaignProgress.SelectedLevelId = level.levelId;
-            PlayerPrefs.Save();
+            Debug.Log($"<b><color=#00FF7F>[LevelRoute]</color></b> Despegando a nivel '{level.levelId}' ({level.displayName}) -> Escena: '{level.sceneName}'.");
 
             if (!string.IsNullOrEmpty(level.sceneName) && Application.CanStreamedLevelBeLoaded(level.sceneName))
             {

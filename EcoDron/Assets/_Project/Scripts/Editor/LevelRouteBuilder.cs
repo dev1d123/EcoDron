@@ -274,7 +274,7 @@ namespace EcoDron.EditorTools
             ctrlSo.FindProperty("scenarioTitleText").objectReferenceValue = scenarioTitleTmp;
             ctrlSo.FindProperty("starsTotalText").objectReferenceValue = starsTotalTmp;
             ctrlSo.FindProperty("levelPopover").objectReferenceValue = popover;
-            ctrlSo.FindProperty("previewReferenceStates").boolValue = true;
+            ctrlSo.FindProperty("previewReferenceStates").boolValue = false;
             ctrlSo.FindProperty("defaultPreviewScenarioId").stringValue = "scenario_02";
             ctrlSo.FindProperty("levelPendingPopup").objectReferenceValue = pendingPopup;
             ctrlSo.FindProperty("levelPendingMessageText").objectReferenceValue = pendingMsg;

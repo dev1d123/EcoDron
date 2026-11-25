@@ -11,40 +11,30 @@ namespace EcoDron.Core
     }
 
     /// <summary>
-    /// Tracks active selection and persisted campaign progress across scenarios and levels.
+    /// Tracks active selection and persisted campaign progress across scenarios and levels via SaveManager.
     /// </summary>
     public static class CampaignProgress
     {
-        private const string SelectedScenarioKey = "EcoDron_SelectedScenario";
-        private const string SelectedLevelKey = "EcoDron_SelectedLevel";
-        private const string StarsPrefix = "EcoDron_LevelStars_";
-
         public static string SelectedScenarioId
         {
-            get => PlayerPrefs.GetString(SelectedScenarioKey, "scenario_01");
-            set => PlayerPrefs.SetString(SelectedScenarioKey, value);
+            get => SaveManager.GetSelectedScenarioId();
+            set => SaveManager.SetSelectedScenarioId(value);
         }
 
         public static string SelectedLevelId
         {
-            get => PlayerPrefs.GetString(SelectedLevelKey, "1.1");
-            set => PlayerPrefs.SetString(SelectedLevelKey, value);
+            get => SaveManager.GetSelectedLevelId();
+            set => SaveManager.SetSelectedLevelId(value);
         }
 
         public static int GetLevelStars(string levelId)
         {
-            return Mathf.Clamp(PlayerPrefs.GetInt(StarsPrefix + levelId, 0), 0, 3);
+            return SaveManager.GetLevelStars(levelId);
         }
 
         public static void SetLevelStars(string levelId, int stars)
         {
-            int current = GetLevelStars(levelId);
-            int clamped = Mathf.Clamp(stars, 0, 3);
-            if (clamped > current)
-            {
-                PlayerPrefs.SetInt(StarsPrefix + levelId, clamped);
-                PlayerPrefs.Save();
-            }
+            SaveManager.SetLevelStars(levelId, stars);
         }
 
         public static int GetScenarioCompletedCount(ScenarioDataSO scenario)
