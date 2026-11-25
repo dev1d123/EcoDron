@@ -65,3 +65,8 @@ crashlytics-build.properties
 ehthumbs.db
 Thumbs.db
 [Dd]esktop.ini
+
+# Local references & editor package settings
+/[Ee]lementos[Rr]eferenciales/
+/[Ee]lementos[Rr]eferenciales.meta
+/[Pp]roject[Ss]ettings/[Pp]ackages/
