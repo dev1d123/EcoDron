@@ -80,7 +80,7 @@ namespace EcoDron.EditorTools
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             scaler.referenceResolution = new Vector2(1920f, 1080f);
             scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
-            scaler.matchWidthOrHeight = 0.7f;
+            scaler.matchWidthOrHeight = 0.5f;
             canvasGo.AddComponent<GraphicRaycaster>();
 
             ScenarioSelectController controller = canvasGo.AddComponent<ScenarioSelectController>();
@@ -107,8 +107,8 @@ namespace EcoDron.EditorTools
             backRt.anchorMin = new Vector2(0f, 1f);
             backRt.anchorMax = new Vector2(0f, 1f);
             backRt.pivot = new Vector2(0f, 1f);
-            backRt.anchoredPosition = new Vector2(48f, -42f);
-            backRt.sizeDelta = new Vector2(92f, 92f);
+            backRt.anchoredPosition = new Vector2(44f, -36f);
+            backRt.sizeDelta = new Vector2(82f, 82f);
             Image backBg = backGo.AddComponent<Image>();
             backBg.sprite = backBtnSprite;
             Button backBtn = backGo.AddComponent<Button>();
@@ -131,7 +131,7 @@ namespace EcoDron.EditorTools
                 canvasGo.transform,
                 boldFont,
                 "MODO CAMPAÑA - ELIGE UN ESCENARIO",
-                52f,
+                46f,
                 Color.white,
                 TextAlignmentOptions.Center,
                 new Vector2(0.5f, 1f),
@@ -141,8 +141,11 @@ namespace EcoDron.EditorTools
             );
             RectTransform headerRt = headerTmp.GetComponent<RectTransform>();
             headerRt.pivot = new Vector2(0.5f, 1f);
-            headerRt.anchoredPosition = new Vector2(0f, -54f);
-            headerRt.sizeDelta = new Vector2(1380f, 80f);
+            headerRt.anchoredPosition = new Vector2(0f, -44f);
+            headerRt.sizeDelta = new Vector2(1280f, 72f);
+            headerTmp.enableAutoSizing = true;
+            headerTmp.fontSizeMin = 24f;
+            headerTmp.fontSizeMax = 46f;
             headerTmp.characterSpacing = 1.5f;
             headerTmp.outlineWidth = 0.26f;
             headerTmp.outlineColor = new Color32(14, 30, 38, 255);
@@ -150,12 +153,12 @@ namespace EcoDron.EditorTools
             // 3. Scenarios Cards Row
             GameObject cardsRow = CreateUIObject("Scenarios_Container", canvasGo.transform);
             RectTransform rowRt = cardsRow.GetComponent<RectTransform>();
-            rowRt.anchorMin = new Vector2(0.5f, 0.47f);
-            rowRt.anchorMax = new Vector2(0.5f, 0.47f);
-            rowRt.sizeDelta = new Vector2(1740f, 670f);
+            rowRt.anchorMin = new Vector2(0.5f, 0.45f);
+            rowRt.anchorMax = new Vector2(0.5f, 0.45f);
+            rowRt.sizeDelta = new Vector2(1520f, 590f);
 
             HorizontalLayoutGroup hlg = cardsRow.AddComponent<HorizontalLayoutGroup>();
-            hlg.spacing = 42f;
+            hlg.spacing = 34f;
             hlg.childAlignment = TextAnchor.MiddleCenter;
             hlg.childControlWidth = false;
             hlg.childControlHeight = false;
@@ -229,7 +232,7 @@ namespace EcoDron.EditorTools
         {
             GameObject cardGo = CreateUIObject(name, parent);
             RectTransform cardRt = cardGo.GetComponent<RectTransform>();
-            cardRt.sizeDelta = new Vector2(536f, 646f);
+            cardRt.sizeDelta = new Vector2(468f, 576f);
 
             Image cardBg = cardGo.AddComponent<Image>();
             cardBg.sprite = whiteCardSprite;
@@ -243,14 +246,17 @@ namespace EcoDron.EditorTools
                 cardGo.transform,
                 boldFont,
                 "ESCENARIO",
-                31f,
+                27f,
                 SlateTextColor,
                 TextAlignmentOptions.Center,
                 new Vector2(0f, 1f),
                 new Vector2(1f, 1f),
-                new Vector2(28f, -94f),
-                new Vector2(-28f, -26f)
+                new Vector2(24f, -84f),
+                new Vector2(-24f, -22f)
             );
+            titleTmp.enableAutoSizing = true;
+            titleTmp.fontSizeMin = 18f;
+            titleTmp.fontSizeMax = 27f;
 
             // Thumbnail with Rounded Mask
             GameObject thumbMaskGo = CreateUIObject("Thumbnail_Mask", cardGo.transform);
@@ -258,8 +264,8 @@ namespace EcoDron.EditorTools
             maskRt.anchorMin = new Vector2(0.5f, 1f);
             maskRt.anchorMax = new Vector2(0.5f, 1f);
             maskRt.pivot = new Vector2(0.5f, 1f);
-            maskRt.anchoredPosition = new Vector2(0f, -104f);
-            maskRt.sizeDelta = new Vector2(464f, 326f);
+            maskRt.anchoredPosition = new Vector2(0f, -92f);
+            maskRt.sizeDelta = new Vector2(406f, 286f);
 
             Image maskImg = thumbMaskGo.AddComponent<Image>();
             maskImg.sprite = maskSprite;
@@ -284,7 +290,7 @@ namespace EcoDron.EditorTools
             RectTransform lockIconRt = lockIconGo.GetComponent<RectTransform>();
             lockIconRt.anchorMin = new Vector2(0.5f, 0.58f);
             lockIconRt.anchorMax = new Vector2(0.5f, 0.58f);
-            lockIconRt.sizeDelta = new Vector2(138f, 138f);
+            lockIconRt.sizeDelta = new Vector2(116f, 116f);
             Image lockIconImg = lockIconGo.AddComponent<Image>();
             lockIconImg.sprite = lockIcon;
             lockIconImg.preserveAspect = true;
@@ -295,7 +301,7 @@ namespace EcoDron.EditorTools
                 lockedOverlay.transform,
                 boldFont,
                 "BLOQUEADO",
-                36f,
+                32f,
                 Color.white,
                 TextAlignmentOptions.Center,
                 new Vector2(0f, 0.08f),
@@ -313,11 +319,11 @@ namespace EcoDron.EditorTools
             progRt.anchorMin = new Vector2(0f, 0f);
             progRt.anchorMax = new Vector2(1f, 0f);
             progRt.pivot = new Vector2(0.5f, 0f);
-            progRt.anchoredPosition = new Vector2(0f, 146f);
-            progRt.sizeDelta = new Vector2(-64f, 54f);
+            progRt.anchoredPosition = new Vector2(0f, 128f);
+            progRt.sizeDelta = new Vector2(-48f, 48f);
 
             HorizontalLayoutGroup progHlg = progressRow.AddComponent<HorizontalLayoutGroup>();
-            progHlg.spacing = 14f;
+            progHlg.spacing = 10f;
             progHlg.childAlignment = TextAnchor.MiddleCenter;
             progHlg.childControlWidth = false;
             progHlg.childControlHeight = false;
@@ -325,19 +331,19 @@ namespace EcoDron.EditorTools
             progHlg.childForceExpandHeight = false;
 
             GameObject progTextGo = CreateUIObject("Text_Progress", progressRow.transform);
-            progTextGo.GetComponent<RectTransform>().sizeDelta = new Vector2(276f, 46f);
+            progTextGo.GetComponent<RectTransform>().sizeDelta = new Vector2(246f, 42f);
             TextMeshProUGUI progTmp = progTextGo.AddComponent<TextMeshProUGUI>();
             progTmp.font = boldFont;
             progTmp.text = "3 / 3 COMPLETADO";
-            progTmp.fontSize = 27f;
+            progTmp.fontSize = 23f;
             progTmp.color = SlateTextColor;
             progTmp.alignment = TextAlignmentOptions.Center;
             progTmp.raycastTarget = false;
 
             GameObject starsGo = CreateUIObject("Stars_Container", progressRow.transform);
-            starsGo.GetComponent<RectTransform>().sizeDelta = new Vector2(126f, 42f);
+            starsGo.GetComponent<RectTransform>().sizeDelta = new Vector2(108f, 38f);
             HorizontalLayoutGroup starsHlg = starsGo.AddComponent<HorizontalLayoutGroup>();
-            starsHlg.spacing = 6f;
+            starsHlg.spacing = 5f;
             starsHlg.childAlignment = TextAnchor.MiddleCenter;
             starsHlg.childControlWidth = false;
             starsHlg.childControlHeight = false;
@@ -345,7 +351,7 @@ namespace EcoDron.EditorTools
             for (int s = 0; s < 3; s++)
             {
                 GameObject starGo = CreateUIObject($"Star_{s + 1}", starsGo.transform);
-                starGo.GetComponent<RectTransform>().sizeDelta = new Vector2(36f, 36f);
+                starGo.GetComponent<RectTransform>().sizeDelta = new Vector2(31f, 31f);
                 Image starImg = starGo.AddComponent<Image>();
                 starImg.sprite = starFilled;
                 starImg.preserveAspect = true;
@@ -358,8 +364,8 @@ namespace EcoDron.EditorTools
             btnRt.anchorMin = new Vector2(0.5f, 0f);
             btnRt.anchorMax = new Vector2(0.5f, 0f);
             btnRt.pivot = new Vector2(0.5f, 0f);
-            btnRt.anchoredPosition = new Vector2(0f, 44f);
-            btnRt.sizeDelta = new Vector2(276f, 82f);
+            btnRt.anchoredPosition = new Vector2(0f, 36f);
+            btnRt.sizeDelta = new Vector2(248f, 74f);
 
             Image btnImg = btnGo.AddComponent<Image>();
             btnImg.sprite = enterBtnSprite;
@@ -374,7 +380,7 @@ namespace EcoDron.EditorTools
                 btnGo.transform,
                 boldFont,
                 "ENTRAR",
-                32f,
+                28f,
                 Color.white,
                 TextAlignmentOptions.Center,
                 Vector2.zero,
